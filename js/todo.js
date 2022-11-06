@@ -12,7 +12,8 @@ function saveToDos() {
 function deleteTodo(event) {
 	const li = event.target.parentElement; // 부모 요소를 가져와 remove 실행
 	li.remove();
-	toDos = toDos.filter((toDo) => toDo.id !== li.id);
+	toDos = toDos.filter((toDo) => toDo.id !== parseInt(li.id)); //toDo.id 는 문자열임 li.id도 문자열로 변환
+	saveToDos();
 }
 
 function paintToDo(newTodo) {
