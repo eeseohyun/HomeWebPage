@@ -1,7 +1,17 @@
+const API_KEY = "da6e8bcca9e8b3820a5ccce82f0e29dd";
+
 function onGeoPass(position) {
 	const lat = position.coords.latitude;
-	const lng = position.coords.longitude;
-	console.log(lat, lng);
+	const lon = position.coords.longitude;
+	const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`;
+	fetch(url)
+		.then((response) => response.json())
+		.then((data) => {
+			const city = document.querySelector("#weather span:first-child");
+			const weather = document.querySelector("#weather span:last-child");
+			city.innerText = data.name;
+			weather.innerText = `${data.main.temp} °`;
+		});
 }
 
 function onGeoError() {
