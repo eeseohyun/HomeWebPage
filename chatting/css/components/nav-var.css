@@ -1,0 +1,8 @@
+.navi {
+	background-color: #f9f9fa;
+	padding: 20px 50px;
+}
+.navi__list {
+	display: flex;
+	justify-content: space-between;
+}
